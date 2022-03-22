@@ -37,7 +37,7 @@ const pizza = {
     category: 'Entree',
     popularity: 90,
     rating: 90,
-    tags: ('kids', 'gluten free')
+    tags: ['kids', 'gluten free']
 }
 
 
@@ -50,7 +50,7 @@ const pizza = {
 */
 
 //CODE HERE
-console.log(pizza.popularity)
+const { popularity } = pizza
 
 /*
     Second, log the second tag in your pizza's
@@ -60,7 +60,7 @@ console.log(pizza.popularity)
 */
 
 //CODE HERE
-console.log(pizza.tags)
+const { tags } = pizza
 
 /*
     Third, destructure the price off of the
@@ -97,39 +97,40 @@ console.log(pizza.category)
 //CODE HERE
 const foodArr = [
 
-    salad = {
+     {
     name: 'Arugula',
     price: 7,
     category: 'Appetizer',
     popularity: 70,
     rating: 80,
-    tags: ('vegetarian', 'gluten free')
+    tags: ['vegetarian', 'gluten free']
 },
-     pasta = {
+     {
     name: 'Spaghetti',
     price: 13,
     category: 'Entree',
     popularity: 80,
     rating: 85,
-    tags: ('kids', 'gluten free')
+    tags: ['kids', 'gluten free']
 },
-     lasagna = {
+      {
     name: 'beef lasagna',
     price: 17,
     category: 'Entree',
     popularity: 95,
     rating: 95,
-    tags: ('contains beef', 'gluten free')
+    tags: ['contains beef', 'gluten free']
 },
-     dessert = {
+      {
     name: 'Tiramisu',
     price: 9,
     category: 'Entree',
     popularity: 82,
     rating: 92,
-    tags: ('contains dairy', 'gluten free')
+    tags: ['contains dairy', 'gluten free']
 },
 ]
+
 //////////////////PROBLEM 4////////////////////
 /* 
     Let's filter the food objects according
@@ -143,12 +144,14 @@ const foodArr = [
 */
 
 //CODE HERE
+const getFoodByTag = (foodObj, currentIndex, array) => {
+    
+const isTagIncluded = foodObj.tags.includes('gluten free')
 
-const filteredFood = foodArr.filter(function(tags){
-    return tags === "gluten free"
-})
-
-
+return isTagIncluded
+}
+const filteredFood = foodArr.filter(getFoodByTag)
+console.log(filteredFood)
 
 //////////////////PROBLEM 5////////////////////
 /* 
@@ -189,15 +192,23 @@ const filteredFood = foodArr.filter(function(tags){
     Return the filtered array from the entire function
 */
 
-//CODE HERE
-const filterByProperty = foodArr.filter(function(a, b, c){
-    return a.popularity = `${this.rating}`, 85, true})
-    if (this.rating >= 85){
-        console.log(foodArr.class)
-    } else {
-        console.log(foodArr.class)
-    }
 
+
+const filterByProperty = (property, number, type) => {
+    const filteredArray = foodArr.filter((food, index, array) => {
+        if (type === 'above') {
+            if (food[property] > number) {
+                return food
+            }
+        }    else {
+        if (food[property] < number){
+            return food
+        }
+    }    
+ })
+    return filteredArray
+}
+   
 /*
     Invoke the `filterByProperty` function passing
     in a value for each paramter.
@@ -206,5 +217,4 @@ const filterByProperty = foodArr.filter(function(a, b, c){
 */
 
 //CODE HERE
-filterByProperty(lasagna, 95, true)
-console.log(filterByProperty)
+console.log(filterByProperty('price', 15, 'below'))

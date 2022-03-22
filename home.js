@@ -49,12 +49,15 @@ greetUser('Andrew')
 
 const deliveryAreaZipCodes = [85205, 85204, 85203, 85213, 85206]
 
-//CODE HERE
+// //CODE HERE
 function canWeDeliver(zipCode){
-    for (let i = 0; i < deliveryAreaZipCodes.length; i++)
-    if (zipCode[i] = deliveryAreaZipCodes){
+    for (let i = 0; i < deliveryAreaZipCodes.length; i++){
+    if (deliveryAreaZipCodes[i]===zipCode){
         console.log("You're in our delivery zone!")
-    } else {
+        return
+    } 
+}   
+     {
         console.log("Sorry, we can't deliver to that address")
     }
 }
@@ -79,14 +82,14 @@ canWeDeliver(85205)
 */
 
 // CODE HERE
-const canWeDeliverTwo = (arr, zipCode, cb) => {
+const canWeDeliverTwo = (arr, zipCode) => {
     if (arr.includes (zipCode) === true) {
         console.log("You're in our delivery zone")
     } else {
         console.log("Sorry, we can't deliver to that address")
     }
 }
-canWeDeliverTwo(85205)
+canWeDeliverTwo(deliveryAreaZipCodes, 85602)
 
 
 //////////////////PROBLEM 3////////////////////
@@ -111,6 +114,7 @@ const deals = [
         title: 'Free Kids Meal with 2 Regular Entrees', 
         desc: '   This deal lasts until the end of March! '
     }
+    
 ]
 
 /*
@@ -123,7 +127,8 @@ const deals = [
 */
 
 //CODE HERE
-     console.log(deals.replace(15, 10))
+    deals[0].title = deals[0].title.replace('15', '10')
+     console.log(deals[0].title)
 
 
 /*
@@ -140,4 +145,5 @@ const deals = [
 */
 
 //CODE HERE
-console.log(deals.replace('March', "April"))
+deals[1].desc = deals[1].desc.replace("March", "April")
+console.log(deals[1].desc)

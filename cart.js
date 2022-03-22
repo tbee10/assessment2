@@ -35,10 +35,16 @@ const cart = [
 
 //CODE HERE
 
- const summedPrice = cart.reduce(function(acc, elem) {
-     return acc + elem.price
- })
+ const getCartTotal = (total, food, currentIndex, array) => {
+     const newTotal = total + food.price
 
+     return newTotal
+ }
+ 
+
+ const summedPrice = cart.reduce(getCartTotal, 0)
+ 
+ console.log(( summedPrice ))
 
 //////////////////PROBLEM 2////////////////////
 /*  
@@ -56,9 +62,17 @@ const cart = [
 */
 
 //CODE HERE
-const calcFinalPrice = (cartTotal, tax, couponValue) => ((a + (a * b) - c))
+const calcFinalPrice = (cartTotal, couponValue, tax) => {
+    const taxAmount = cartTotal * tax
+    const cartTotalWithTax = cartTotal + taxAmount
+    const newCartTotal = cartTotalWithTax - couponValue
 
-calcFinalPrice(25, .07, 1)
+    return newCartTotal
+}
+
+const cartTotal = calcFinalPrice(10, 2, 0.1)
+
+console.log(( cartTotal))
 //////////////////PROBLEM 3////////////////////
 /*  
     In this problem, you'll create a model for 
@@ -97,4 +111,4 @@ const customer = {
     phone: '555-555-5555'
 }
 
-console.log(customer.name)
+console.log(customer)
